@@ -1,0 +1,34 @@
+|script                           |Connexion Dolibarr                                                      |
+|je lance l'application Dolibarr                                                                           |
+|je me connecte avec l'identifiant|jsmith                                |et son mot de passe|Selenium&2018|
+|check                            |le profil de l'utilisateur affiché est|John                             |
+|check                            |je suis sur la page                   |Accueil                          |
+
+|script                                        |Tiers                                                                      |
+|je navigue au formulaire de Nouveau tiers                                                                                 |
+|je crée un nouveau tiers avec les informations|!{Nom:Client X,Prospect / Client:Client,Fournisseur:Non,Email:test@test.fr}|
+|$codeClient=                                  |je récupère le code client                                                 |
+|check                                         |le code client respecte le format attendu                                  |
+|je valide le nouveau tiers                                                                                                |
+|je recherche le tiers avec le code client     |$codeClient                                                                |
+
+!|script                          |Proposition                                                                             |
+|je clique sur le lien            |Client                                                                                  |
+|je clique sur le lien            |Créer une proposition                                                                   |
+|check                            |la duréé de validité est de    |15     |jours                                           |
+|je clique sur le bouton          |Créer brouillon                                                                         |
+|je renseigne une référence client|XXX-111                                                                                 |
+|je sélectionne une ligne libre   |Produit                                                                                 |
+|j'ajoute une ligne de            |2                              |produit|PhoneX|pour un prix de|500|et une remise de|10|%|
+|check                            |le montant total TTC est       |       |1 080,00 €                                      |
+|je clique sur le lien            |Valider                                                                                 |
+|je confirme la proprosition validée                                                                                       |
+|check                            |le statut de la proposition est|Validée (proposition ouverte)                           |
+|$codeClient=                     |je récupère le code de la proposition                                                   |
+
+
+
+|script|Connexion  Dolibarr       |
+|je me déconnecte                 |
+|ensure|le champ Login est affiché|
+|je ferme l'application Dolibarr  |
